@@ -2,6 +2,8 @@
 import requests
 import json
 import codecs
+import os
+import time
 
 def getInfo(ip):
     resp = requests.get('http://ip-api.com/json/' + ip)
@@ -47,9 +49,14 @@ def main():
     for c,l in enumerate(chunks):
 
         data = batchRequest(l)
-        s =  str(c)
+        time.sleep( 1 )
+        script_dir = os.path.dirname(r'C:\Users\admin\Documents\git\pyAuthLog\data')
+        s = "data\\"
+        s +=  str(c)
         s += "_output.json"
-        with open(s, "wb") as outfile:
+        absPath = os.path.join(script_dir, s)
+        print("Chunk Number ", str(c) + " Path: " + str(absPath) )
+        with open(absPath, "wb") as outfile:
             json.dump(data,codecs.getwriter('utf-8')(outfile), ensure_ascii=False)
 
 
