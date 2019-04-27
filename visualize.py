@@ -5,6 +5,7 @@ from collections import Counter
 import matplotlib.pyplot as plt
 import numpy as np
 from mpl_toolkits.basemap import Basemap
+import os
 
 def readIps():
     data = {}
@@ -40,13 +41,16 @@ def createBarGraph(data,  xlabel, ylabel, title):
     """ plt.plot() """
     return plt
 
+def getDataFromFiles():
+    for filename in os.listdir("data"):
+        print(filename)
 
 def main():
     # ToDo
     # - Save to PDF
     # - Create World Map
-    data = readIps()
-    countrys = []
+    data = getDataFromFiles()
+    """ countrys = []
     lonlat = []
     isps = []
     # Prepare Data
@@ -80,7 +84,7 @@ def main():
 
     
     #ispPlt.show()
-    # Save to PDF
+    # Save to PDF """
     
 
 if __name__ == "__main__":
