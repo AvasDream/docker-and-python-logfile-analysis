@@ -12,4 +12,10 @@ docker run --rm -it --volume="C:/Users/Tyrell Wellick/git/pyAuthLog:/home/src" p
 docker rm $(docker ps -a -q)
 
 docker rmi $(docker images -q)
+
 ```
+
+
+## Python 
+
+* Because i get all the filepaths with getcwd script has to be executed from /home/pyauthlog!
