@@ -50,7 +50,7 @@ def main():
     # - Save to PDF
     # - Create World Map
     data = getDataFromFiles()
-    """ countrys = []
+    countrys = []
     lonlat = []
     isps = []
     # Prepare Data
@@ -84,7 +84,7 @@ def main():
 
     
     #ispPlt.show()
-    # Save to PDF """
+    # Save to PDF
     
 
 if __name__ == "__main__":

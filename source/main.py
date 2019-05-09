@@ -11,7 +11,7 @@ def is_date(string, fuzzy=False):
         return False
 
 def main():
-    if len(sys.argv) < 2:
+    """ if len(sys.argv) < 2:
         print("Usage python main.py <DATE>")
         print("Date has to be in this format:")
         print("DD-MM-YY")
@@ -21,14 +21,15 @@ def main():
     else:
         date = sys.argv[1]
     # Get Information and save to json files
-    """ dp = dataProcessor()
+    dp = dataProcessor()
     ip_list = dp.importIps(date)
     chunks = dp.createChunks(ip_list)
     dp.getInformation(chunks) """
 
     # Create BarCharts
     bc = barchartCreator()
-
+    data = bc.readDataFromFiles()
+    print(data)
 
 
 if __name__ == "__main__":
