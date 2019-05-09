@@ -27,10 +27,11 @@ def main():
     dp.getInformation(chunks) """
 
     # Create BarCharts
+    # isp / data
     bc = barchartCreator()
     data = bc.readDataFromFiles()
-    print(data)
-
+    data_type = "country"
+    bc.getTop15(data,data_type)
 
 if __name__ == "__main__":
     main()

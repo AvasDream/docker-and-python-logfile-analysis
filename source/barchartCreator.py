@@ -10,6 +10,12 @@ class barchartCreator:
     def __init__(self):
         print("[*] Initialized barchartCreator")
 
+    def getTop15(self,data, dataname):
+        return_data = []
+        for x in data:
+            return_data.append(data[x][dataname])
+        return return_data
+
     def readDataFromFiles(self):
         data = {}
         for filename in os.listdir("data"):
@@ -18,8 +24,8 @@ class barchartCreator:
                 raw = json.load(infile)
                 for c,i in enumerate(raw):
                     #print(i)
-                    s = str(filename)
+                    s = str(c)
                     s += "-"
-                    s += str(c)
+                    s += str(filename)
                     data[s] = i
         return data
