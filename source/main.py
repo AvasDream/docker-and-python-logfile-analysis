@@ -1,7 +1,9 @@
 import sys
+import os
 from dateutil.parser import parse
 from dataProcessor import dataProcessor
 from barchartCreator import barchartCreator
+
 def is_date(string, fuzzy=False):
     try: 
         parse(string, fuzzy=fuzzy)
@@ -11,6 +13,11 @@ def is_date(string, fuzzy=False):
         return False
 
 def main():
+    # Check if gitignore folders exist yet
+    if not os.path.exists("data"):
+        os.makedirs("data")
+    if not os.path.exists("output"):
+        os.makedirs("output")
     if len(sys.argv) < 2:
         print("Usage python main.py <DATE>")
         print("Date has to be in this format:")
@@ -32,10 +39,11 @@ def main():
     data_type = "countryCode"
     country_data = bc.getTop15(data,data_type)
     bc.createBarGraph(country_data, \
-                'Countrys', \
+                'Countries', \
                 'IP addresses', \
                 'IPs from country', \
                 date + "-country")
+    # delete /data
     dp.cleanup()
 if __name__ == "__main__":
     main()

@@ -51,9 +51,10 @@ class dataProcessor:
             print("[*] Imported Ips from file %s" % str(filepath))
             return ips
         except:
-            e = sys.exc_info()[1]
+            f = open("output/error.log", "w")
+            f.write(str(sys.exc_info()))
             print("[!] Error while importing Ips from file")
-            print( "[!] Error: %s" % str(e) )
+            sys.exit
 
     def createChunks(self, ip_list):
         try:
@@ -61,9 +62,10 @@ class dataProcessor:
             print("[*] Created %d chunks with 100 IPs per chunk" % len(chunks))
             return chunks
         except:
-            e = sys.exc_info()[1]
+            f = open("output/error.log", "w")
+            f.write(str(sys.exc_info()))
             print("[!] Error while creating chunks from IP list")
-            print( "[!] Error: %s" % str(e) )
+            sys.exit
 
     def getInformation(self,chunks):
         try:
@@ -80,9 +82,10 @@ class dataProcessor:
                     json.dump(data,codecs.getwriter('utf-8')(outfile), ensure_ascii=False)
                 print("[*] Information for chunk %s saved to %s" % (str(c),s))
         except:
-            e = sys.exc_info()[1]
+            f = open("output/error.log", "w")
+            f.write(str(sys.exc_info()))
             print("[!] Error while getting Data")
-            print( "[!] Error: %s" % str(e) )
+            sys.exit
 
     def cleanup(self):
         try:
@@ -91,6 +94,7 @@ class dataProcessor:
                 os.remove(os.path.join("data", file))
             print("[*] Cleaned data directory")
         except:
-            e = sys.exc_info()[1]
-            print("[!] Error cleaning up")
-            print( "[!] Error: %s" % str(e) )
+            f = open("output/error.log", "w")
+            f.write(str(sys.exc_info()))
+            print("[!] Error while cleaning up")
+            sys.exit
