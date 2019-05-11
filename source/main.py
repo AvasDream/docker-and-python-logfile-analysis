@@ -3,6 +3,7 @@ import os
 from dateutil.parser import parse
 from dataProcessor import dataProcessor
 from barchartCreator import barchartCreator
+from pdfCreator import pdfCreator
 
 def is_date(string, fuzzy=False):
     try: 
@@ -28,22 +29,26 @@ def main():
     else:
         date = sys.argv[1]
     # Get Information and save to json files
-    dp = dataProcessor()
+    """ dp = dataProcessor()
     ip_list = dp.importIps(date)
     chunks = dp.createChunks(ip_list)
-    dp.getInformation(chunks)
+    dp.getInformation(chunks) """
 
     # Create BarChart
     bc = barchartCreator()
     data = bc.readDataFromFiles()
-    data_type = "countryCode"
-    country_data = bc.getTop15(data,data_type)
-    bc.createBarGraph(country_data, \
+    
+    # Create PDF report
+    pdfC = pdfCreator()
+    pdfC.addBasicInfo(date)
+    #data_type = "countryCode"
+    #country_data = bc.getTop15(data,data_type)
+    """ bc.createBarGraph(country_data, \
                 'Countries', \
                 'IP addresses', \
                 'IPs from country', \
                 date + "-country")
     # delete /data
-    dp.cleanup()
+    dp.cleanup() """
 if __name__ == "__main__":
     main()
