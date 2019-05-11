@@ -11,7 +11,7 @@ def is_date(string, fuzzy=False):
         return False
 
 def main():
-    """ if len(sys.argv) < 2:
+    if len(sys.argv) < 2:
         print("Usage python main.py <DATE>")
         print("Date has to be in this format:")
         print("DD-MM-YY")
@@ -24,14 +24,18 @@ def main():
     dp = dataProcessor()
     ip_list = dp.importIps(date)
     chunks = dp.createChunks(ip_list)
-    dp.getInformation(chunks) """
+    dp.getInformation(chunks)
 
-    # Create BarCharts
-    # isp / data
+    # Create BarChart
     bc = barchartCreator()
     data = bc.readDataFromFiles()
-    data_type = "country"
-    bc.getTop15(data,data_type)
-
+    data_type = "countryCode"
+    country_data = bc.getTop15(data,data_type)
+    bc.createBarGraph(country_data, \
+                'Countrys', \
+                'IP addresses', \
+                'IPs from country', \
+                date + "-country")
+    dp.cleanup()
 if __name__ == "__main__":
     main()
