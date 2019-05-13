@@ -39,44 +39,50 @@ class pdfCreator:
             # Add Data
             bc = barchartCreator()
             # Internet Service Provider
+            flowables.append(Paragraph("Internet service providers top 15", styles["Heading2"]))
             isp = bc.getTop15(data, "isp")
-            for x in isp:
-                isp_string = str(x[0]) + " : " + str(x[1]) + "\n"
+            for c,x in enumerate(isp):
+                isp_string = str(c+1) + ". " + str(x[0]) + " : " + str(x[1]) + "\n"
                 p = Paragraph(isp_string, style=styles["Normal"])
                 flowables.append(p)
-            # Autonomes System
+            # Autonomous System
             flowables.append(Spacer(20,20))
+            flowables.append(Paragraph("Autonomous system Top 15", styles["Heading2"]))
             as_data = bc.getTop15(data, "as")
-            for x in as_data:
-                as_string = str(x[0]) + " : " + str(x[1]) + "\n"
+            for c,x in enumerate(as_data):
+                as_string = str(c+1) + ". " + str(x[0]) + " : " + str(x[1]) + "\n"
                 p = Paragraph(as_string, style=styles["Normal"])
                 flowables.append(p)
             # timezone
             flowables.append(Spacer(20,20))
+            flowables.append(Paragraph("Timezones Top 15", styles["Heading2"]))
             timezone = bc.getTop15(data, "timezone")
-            for x in timezone:
-                timezone_string = str(x[0]) + " : " + str(x[1]) + "\n"
+            for c,x in enumerate(timezone):
+                timezone_string = str(c+1) + ". " + str(x[0]) + " : " + str(x[1]) + "\n"
                 p = Paragraph(timezone_string, style=styles["Normal"])
                 flowables.append(p)
             # Organization
             flowables.append(Spacer(20,45))
+            flowables.append(Paragraph("Organizations Top 15", styles["Heading2"]))
             organization = bc.getTop15(data, "org")
-            for x in organization:
-                organization_string = str(x[0]) + " : " + str(x[1]) + "\n"
+            for c,x in enumerate(organization):
+                organization_string = str(c+1) + ". " + str(x[0]) + " : " + str(x[1]) + "\n"
                 p = Paragraph(organization_string, style=styles["Normal"])
                 flowables.append(p)
-            # countires
+            # countries
             flowables.append(Spacer(20,20))
+            flowables.append(Paragraph("Countries Top 15", styles["Heading2"]))
             timezone = bc.getTop15(data, "country")
-            for x in timezone:
-                country_string = str(x[0]) + " : " + str(x[1]) + "\n"
+            for c,x in enumerate(timezone):
+                country_string = str(c+1) + ". " + str(x[0]) + " : " + str(x[1]) + "\n"
                 p = Paragraph(country_string, style=styles["Normal"])
                 flowables.append(p)
             self.doc.build(flowables)
+            print("[*] PDF report generated to output/report-" + date + ".pdf")
         except:
             f = open("output/error.log", "w")
             f.write(str(sys.exc_info()))
             f.write( "\n" + str(sys.exc_info()[1]))
-            print("[!] Error while initializing pdf file")
+            print("[!] Error while generating PDF report")
             sys.exit
 
