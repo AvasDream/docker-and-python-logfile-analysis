@@ -24,10 +24,14 @@ Dockpylog is triggered by a cronjob and does the following steps one time per da
 
 6. Cleanup data
 
+## Usage
+
+Just check the `/output` folder for generated images and reports :)
+
 ## Installation
 
 The installation is tested on a few debian derivates including Debain 9, Ubuntu 18, Kali Linux 2018.3.
-Dockpylog need docker to be installed.
+Dockpylog requires Docker to be installed.
 
 ```bash
 git clone https://github.com/AvasDream/dockpylog.git
@@ -44,9 +48,6 @@ What does the install script do?
 
 4. Add cronjob to crontab. 
 
-## Usage
-
-Just check the `/output` folder for generated images and reports :)
 
 ## Used Libraries
 
@@ -68,6 +69,10 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ## Developement Notes:
 
+* Add Worldmap with one dot per IP
+
+* Add basemap in Dockerfile
+
 ```python
 m = Basemap(projection='robin',lon_0=0,resolution='c')
     m.fillcontinents(color='white',lake_color='white')
@@ -79,6 +84,7 @@ m = Basemap(projection='robin',lon_0=0,resolution='c')
     plt.title("Source of login attempts")
     plt.show()
 ```
+* Add Timestamp parsing 
 
 ```
 docker build . -t pyauthlog
