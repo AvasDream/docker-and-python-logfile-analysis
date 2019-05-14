@@ -22,6 +22,20 @@ class pdfCreator:
                             bottomMargin=18)
         print("[*] Initialized pdfCreator")
 
+    def addImage(self, date, datatype, flowable):
+        try:
+            imgname = "output/" + date + "-" + datatype + ".jpeg"
+            im = Image(imgname, width=500,height=350)
+            im.hAlign = "CENTER"
+            flowable.append(im)
+            print("[*] added " + imgname + "to PDF report")
+            return flowable
+        except:
+            f = open("output/error.log", "w")
+            f.write(str(sys.exc_info()))
+            f.write( "\n" + str(sys.exc_info()[1]))
+            print("[!] Error while adding image to PDF report")
+            sys.exit
     
     
     def generateReport(self,date,data):
@@ -77,6 +91,8 @@ class pdfCreator:
                 country_string = str(c+1) + ". " + str(x[0]) + " : " + str(x[1]) + "\n"
                 p = Paragraph(country_string, style=styles["Normal"])
                 flowables.append(p)
+            # Add image
+            flowables = self.addImage(date, "country",flowables)
             self.doc.build(flowables)
             print("[*] PDF report generated to output/report-" + date + ".pdf")
         except:
