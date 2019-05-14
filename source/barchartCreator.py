@@ -58,12 +58,12 @@ class barchartCreator:
             plt.ylabel(ylabel, fontsize=10)
             plt.xticks(index, label, fontsize=8, rotation=30)
             plt.title(title)
-            plt.savefig( "output/" + filename + ".png")
-            print("[*] Plot saved to output/" + filename + ".png")
+            plt.savefig( "output/" + filename + ".jpeg")
+            print("[*] Plot saved to output/" + filename + ".jpeg")
         except:
             f = open("output/error.log", "w")
             f.write(str(sys.exc_info()))
-            print("[!] Error while saving to output/" + filename + ".png")
+            print("[!] Error while saving to output/" + filename + ".jpeg")
             sys.exit
         
         
