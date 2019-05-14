@@ -64,10 +64,10 @@ crontab -l
 if [ "$?" -ne 0 ]
 then
   echo "[*] crontab is empty creating from scratch"
-  echo -e "0 3 * * * cd $(echo $pwd) && pyauthmonitor" >> tmpcron && crontab tmpcron && rm tmpcron
+  echo "0 3 * * * cd $(pwd) && pyauthmonitor" >> tmpcron && crontab tmpcron && rm tmpcron
 else
   echo "[*] creating crontab entry"
-  crontab -l > tmpcron && echo -e "0 3 * * * cd $(echo $pwd) && pyauthmonitor" >> tmpcron && crontab tmpcron && rm tmpcron
+  crontab -l > tmpcron && echo "0 3 * * * cd $(pwd) && pyauthmonitor" >> tmpcron && crontab tmpcron && rm tmpcron
 fi
 if [ "$?" -ne 0 ]
 then 
