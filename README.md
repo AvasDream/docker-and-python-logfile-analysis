@@ -3,9 +3,10 @@
 DO NOT FORGET RM!!!
 ```
 docker build . -t pyauthlog
-
+# Developement
 docker run --rm -it --volume="C:/Users/Tyrell Wellick/git/pyAuthLog:/home/src" pyauthlog /bin/bash
-
+# Production
+docker run -it --rm -e DATE="19-04-19"  -v "$(pwd):/home/pyauthlog" pyauthlog
 
 # Delete all images
 
