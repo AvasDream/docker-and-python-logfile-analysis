@@ -16,6 +16,7 @@ docker rmi $(docker images -q)
 
 ```
 
+![Example Graph](/examples/19-04-19-country.jpeg)
 
 ## Python 
 
