@@ -18,6 +18,8 @@ docker rmi $(docker images -q)
 
 ![Example Graph](/examples/19-04-19-country.jpeg)
 
+[Example report](/examples/report-19-04-19.pdf)
+
 ## Python 
 
 * Because i get all the filepaths with getcwd script has to be executed from /home/pyauthlog!
