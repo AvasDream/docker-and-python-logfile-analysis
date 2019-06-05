@@ -1,4 +1,4 @@
-## Dockpylog
+## Dockpylog :snake: :whale: :mag_right:
 
 Dockpylog can be used to automate the process of creating reports and graphs from your auth.log logfiles. It runs in a docker container and comes with an dockerfile to describe all dependencies. This project is mainly written in python, only the installation and the crontab scripts are in bash. 
 
